@@ -2,24 +2,28 @@ CFLAGS=-g -O2 -Wall -DNDEBUG $(OPTFLAGS)
 LIBS=-ldl $(OPTLIBS)
 
 SOURCES=$(wildcard src/**/*.c src/*.c)
+HEADERS=$(wildcard src/**/*.h src/*.h)
 OBJECTS=$(patsubst %.c,%.o,$(SOURCES))
 
-TARGET=bin/greet
+TARGET=build/greet.a
 
 all: $(TARGET)
 
 dev: CFLAGS=-g -Wall $(OPTFLAGS)
 dev: all
 
-$(TARGET): bin $(OBJECTS)
-	$(CC) -o $@ $(OBJECTS)
+$(TARGET): build $(OBJECTS)
+	ar rcs $@ $(OBJECTS)
+	ranlib $@
 
-bin:
-	@mkdir -p bin
+build:
+	@mkdir -p build
 
 clean:
-	rm -rf bin outputs result $(OBJECTS)
+	rm -rf build outputs result $(OBJECTS)
 
 install: all
-	install -d $(OUTDIR)/bin/
-	install $(TARGET) $(OUTDIR)/bin/
+	install -d $(OUTDIR)/include/
+	install -d $(OUTDIR)/lib/
+	install $(TARGET) $(OUTDIR)/lib/
+	install $(HEADERS) $(OUTDIR)/include/

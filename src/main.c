@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-int main() {
-  printf("Hello\n");
-  return 0;
-}
+#include "greet.h"
+
+void greet_person(const char *name) { printf("Hello %s\n", name); }
