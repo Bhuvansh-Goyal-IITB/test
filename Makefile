@@ -18,7 +18,7 @@ bin:
 	@mkdir -p bin
 
 clean:
-	rm -rf bin $(OBJECTS)
+	rm -rf bin outputs result $(OBJECTS)
 
 install: all
 	install -d $(OUTDIR)/bin/

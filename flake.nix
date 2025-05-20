@@ -21,9 +21,8 @@
             ];
 
             buildPhase = ''
-              														ls
-                            							make
-                            						'';
+              							make
+              						'';
 
             installPhase = ''
               							make OUTDIR="$out" install
