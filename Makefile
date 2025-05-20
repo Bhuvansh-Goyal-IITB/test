@@ -5,7 +5,7 @@ SOURCES=$(wildcard src/**/*.c src/*.c)
 HEADERS=$(wildcard src/**/*.h src/*.h)
 OBJECTS=$(patsubst %.c,%.o,$(SOURCES))
 
-TARGET=build/greet.a
+TARGET=build/libgreet.a
 
 all: $(TARGET)
 
